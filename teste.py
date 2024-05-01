@@ -5,7 +5,11 @@ app = FastAPI()
 
 @app.get('/')
 def root():
-    return {'mensagem': 'Home'}
+    n = 10
+    for i in range(10):
+        n += 1
+
+    return {'mensagem': 'Home', 'valor': n}
 
 
 @app.get('/login')
