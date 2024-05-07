@@ -1,24 +1,16 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 
 app = FastAPI()
 
-usuarios = [(1, 'Guilherme Montenegro', 'minhasenha1'), (2, 'Andressa Borges', 'minhasenha2')]
 
-
-@app.get('/usuarios/{id}')
-def main(id:int):
-    for usuario in usuarios:
-        if usuario[0] == id:
-            return usuario
-    
-    return 'Esse usuário não existe'
+class Usuario(BaseModel):
+    id: int
+    nome: str
+    senha: str
 
 
 @app.post('/usuarios')
-def main(nome):
-    for usuario in usuarios:
-        if usuario[1] == nome:
-            return usuario
-    
-    return 'Esse usuário não existe'
+def main(usuario: Usuario):
+    return usuario  
