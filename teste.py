@@ -13,3 +13,12 @@ def main(id:int):
             return usuario
     
     return 'Esse usuário não existe'
+
+
+@app.post('/usuarios')
+def main(nome):
+    for usuario in usuarios:
+        if usuario[1] == nome:
+            return usuario
+    
+    return 'Esse usuário não existe'
