@@ -1,5 +1,5 @@
 import requests
 
-retorno = requests.get("http://127.0.0.1:8000/login")
+retorno = requests.get(f"http://127.0.0.1:8000/usuarios/1")
 
-print(retorno.json()['mensagem'])
+print(retorno.json())

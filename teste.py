@@ -1,23 +1,15 @@
 from fastapi import FastAPI
 
+
 app = FastAPI()
 
-
-@app.get('/')
-def root():
-    n = 10
-    for i in range(10):
-        n += 1
-
-    return {'mensagem': 'Home', 'valor': n}
+usuarios = [(1, 'Guilherme Montenegro', 'minhasenha1'), (2, 'Andressa Borges', 'minhasenha2')]
 
 
-@app.get('/login')
-def root():
-    return {'mensagem': 'Login'}
-
-
-@app.get('/cadastro')
-def root():
-    return {'mensagem': 'Cadastro'}
-
+@app.get('/usuarios/{id}')
+def main(id:int):
+    for usuario in usuarios:
+        if usuario[0] == id:
+            return usuario
+    
+    return 'Esse usuário não existe'
