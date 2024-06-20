@@ -3,7 +3,16 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime, timezone
 
-engine = create_engine('sqlite:///db.sqlite3', echo=True)
+
+USER = 'root'
+PASSWORD = ''
+HOST = 'localhost'
+DB = 'aulafastapi'
+PORT = '3306'
+
+CONN = f'mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}'
+
+engine = create_engine(CONN, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
@@ -15,6 +24,7 @@ class Pessoa(Base):
     nome = Column(String(50))
     usuario = Column(String(20))
     senha = Column(String(10))
+
 
 class Tokens(Base):
     __tablename__ = 'Tokens'
