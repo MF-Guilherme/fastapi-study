@@ -36,7 +36,7 @@ def listar(opcao: int = 0):
 
 
 @app.get('/listar/{id}')
-def listar_por_id(id:int):
+def listar_por_id(id: int):
     try:
         return lista[id]
     except:
